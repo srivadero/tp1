@@ -3,11 +3,16 @@
   "version": "1.0.0",
   "private": true,
   "scripts": {
+    "mrm": "mrm --preset=@adonisjs/mrm-preset",
     "dev": "node ace serve --watch",
     "build": "node ace build --production",
     "start": "node server.js",
     "lint": "eslint . --ext=.ts",
-    "format": "prettier --write ."
+    "format": "prettier --write .",
+    "sync-labels": "github-label-sync --labels ./node_modules/@adonisjs/mrm-preset/gh-labels.json srivadero/tp1",
+    "commit": "git-cz",
+    "release": "np --message=\"chore(release): %s\"",
+    "version": "npm run build"
   },
   "eslintConfig": {
     "extends": [
@@ -38,14 +43,21 @@
   },
   "devDependencies": {
     "@adonisjs/assembler": "^5.8.0",
+    "@adonisjs/mrm-preset": "^5.0.3",
     "@japa/preset-adonis": "^1.1.0",
     "@japa/runner": "^2.0.9",
     "@symfony/webpack-encore": "^3.0.0",
     "adonis-preset-ts": "^2.1.0",
+    "commitizen": "^4.2.4",
+    "cz-conventional-changelog": "^3.3.0",
     "eslint": "^8.19.0",
     "eslint-config-prettier": "^8.5.0",
     "eslint-plugin-adonis": "^2.1.0",
     "eslint-plugin-prettier": "^4.2.1",
+    "github-label-sync": "^2.2.0",
+    "husky": "^8.0.1",
+    "mrm": "^4.0.0",
+    "np": "^7.6.2",
     "pino-pretty": "^8.1.0",
     "prettier": "^2.7.1",
     "typescript": "~4.6",
@@ -61,5 +73,25 @@
     "proxy-addr": "^2.0.7",
     "reflect-metadata": "^0.1.13",
     "source-map-support": "^0.5.21"
+  },
+  "mrmConfig": {
+    "core": false,
+    "license": "MIT",
+    "services": [
+      "github-actions"
+    ],
+    "minNodeVersion": "16.13.1",
+    "probotApps": [],
+    "runGhActionsOnWindows": false
+  },
+  "license": "MIT",
+  "config": {
+    "commitizen": {
+      "path": "cz-conventional-changelog"
+    }
+  },
+  "np": {
+    "contents": ".",
+    "anyBranch": false
   }
 }
